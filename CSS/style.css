@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.content-global {
+  width: 98%;
+  height: 100%;
+}
+
+header {
+  width: 100%;
+  height: 65px;
+  background-color: #176db7;
+}
+
+header .content-global {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .content-global h1 {
+  font-family: "Bebas Neue", cursive;
+  color: #fff;
+  font-size: 2em;
+}
+
+header .content-global img {
+  width: 60px;
+  height: 52px;
+}
+
+article {
+  width: 100%;
+  height: 500px;
+  background: tomato;
+}
+
+article .content-global {
+  margin: auto;
+  background: violet;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+article .content-global .left, article .content-global .right {
+  width: 10%;
+  height: 100%;
+  background: lawngreen;
+}
+
+article .content-global .center {
+  width: 80%;
+  height: 100%;
+  background-color: aqua;
+}
+/*# sourceMappingURL=style.css.map */
