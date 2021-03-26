@@ -1,5 +1,17 @@
 const { generateJSON } = require('./helpers/writeJSON');
 const { getDataLogs } = require('./helpers/readJSON');
+//
+const getLogs = async () => {
+    try {
+        //Esta promesa tiene como objetivo escribir el JSON, si se escribe bien devuelve un true
+        const responseGenerateJSON = await generateJSON();
+        const data = await getDataLogs('logs.json');
+        return data;
+    }catch(error) {
+        console.log('EL MANEJO DE LOS LOGS SALIO MAL');
+        throw error;
+    }
+}
 //Servidor de peticiones WEB
 const http = require('http');
 const host = '127.0.0.1';
@@ -16,29 +28,24 @@ const requestListener = async (req, res) => {
             res.end('Return');
             break;
         case '/loadDataAccessLogs':
-            try {
-                //Esta promesa tiene como objetivo escribir el JSON, si se escribe bien devuelve un true
-                const responseGenerateJSON = await generateJSON();
-                //Si devuelve un true procedemmos a leer el JSON obtenido y lo mandamos al cliente
-                if (responseGenerateJSON) {
-                    const data = await getDataLogs('logs.json');
+            getLogs()
+                .then(data => {
                     console.log('Piden json');
                     res.setHeader("Access-Control-Allow-Origin", "*");
                     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With");
-                    res.setHeader("Content-Type", "application/json");
+                    res.setHeader("Content-Type", "text/plain");
                     res.writeHead(200);
                     res.end(data);
-                }
-            } catch (err) {
-                //Manejo de errores de las dos funciones anteriores
-                console.log('Error al procesar el JSON');
-                console.log(err);
-                res.setHeader("Access-Control-Allow-Origin", "*");
-                res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With");
-                res.setHeader("Content-Type", "text/plain");
-                res.writeHead(500);
-                res.end(`Error al procesar el JSON ${err}`);
-            }
+                })
+                .catch(err => {
+                    console.log('Error al procesar el JSON');
+                    console.log(err);
+                    res.setHeader("Access-Control-Allow-Origin", "*");
+                    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With");
+                    res.setHeader("Content-Type", "text/plain");
+                    res.writeHead(500);
+                    res.end(`Error al procesar el JSON ${err}`);
+                })
             break;
         default:
             console.log('Error');

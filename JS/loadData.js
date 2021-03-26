@@ -13,7 +13,18 @@ const request = (requestData) => {
         xhr.send();
     })
 }
-
+//Función parar imprimir la data que obtenemos al hacer una petición al server
+const printData = (data) => {
+    //Recorremos el JSON elemento por elemento
+    //Tenemos que recorrer desde el último elemento que sería el último elemento solicitado
+    data.slice().reverse().forEach(el => {
+        const HTML = `
+            <li>
+                <p></p>
+            </li>
+        `
+    })
+}
 showBtnTables.addEventListener('click', () => {
     //Mostrar los botones de las tablas
     tablesContent.classList.toggle('appear');
@@ -22,5 +33,6 @@ showBtnTables.addEventListener('click', () => {
 //Esta es la función que se encarga de mostrar todo el JSON que nos devuelve el backend (NODEJS)
 loadData.addEventListener('click', async() => {
     const data = await request({method: 'GET', url: 'http://127.0.0.1:8082/loadDataAccessLogs'});
-    console.log(data);
+    //console.log(data.responseText);
+    printData(JSON.parse(data.responseText));
 })
