@@ -18,6 +18,16 @@
     <article>
         <div class="content-global">
             <div class="left">
+                <span class="btn-loadData" id="btn-loadData">Load Data</span>
+
+                <div class="tables-content">
+                    <span class="btn-loadTables" id="btn-loadTables">Show Tables</span>
+                    <ul class="tables" id="tables-content">
+                        <li class="tables-item">Recurso mas solicitado</li>
+                        <li class="tables-item">Tabla de condigos</li>
+                        <li class="tables-item">Hora de mas tráfico</li>
+                    </ul>                    
+                </div>
 
             </div>
 
@@ -27,9 +37,30 @@
             </div>
 
             <div class="right">
+                <div class="codigoColores">
+                    <h2>Código de Colores</h2>
+                    <span class="codigo-color-item resOk">
+                        Respuesta Satisfactoria
+                    </span>
+                    <span class="codigo-color-item resInformative">
+                        Respuesta Informátiva
+                    </span>
+                    <span class="codigo-color-item resRedirection">
+                        Redirección
+                    </span>
+                    <span class="codigo-color-item resErrClient">
+                        Error del cliente
+                    </span>
+                    <span class="codigo-color-item resErrServer">
+                        Error del servidor
+                    </span>
+                    
 
+                </div>
             </div>
         </div>
     </article>
+
+    <script src="./JS/loadData.js"></script>
 </body>
 </html>

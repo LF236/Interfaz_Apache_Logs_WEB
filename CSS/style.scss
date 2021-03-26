@@ -3,6 +3,8 @@
 //Var
 $headerHeigh: 65px;
 $firstColor: #176db7;
+$secondColor: #05ac53;
+$thirdColor: #219d67;
 $fontMain: 'Bebas Neue', cursive;
 $fontSecond: 'Ubuntu', sans-serif;
 //Reset
@@ -45,21 +47,152 @@ header {
 article {
     width: 100%;
     height: 500px;
-    background: tomato;
+    //background: tomato;
     .content-global {
         margin: auto;
-        background: violet;
+        //background: violet;
         display: flex;
         .left, .right {
             width: 10%;
             height: 100%;
-            background: lawngreen;
+            //background: lawngreen;
         }
 
+        .left {
+            //Diseño de los botones
+            span[class^='btn-'] {
+                display: block;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 50px;
+                margin-bottom: 10px;
+                margin-top: 10px;
+
+                color: #fff;
+                font-size: 1.2em;
+                background: $firstColor;
+                font-family: $fontMain;
+                cursor: pointer;
+                //Animation
+                transition: font-size .3s;
+                &:hover {
+                    font-size: 1.1em;
+                }
+            }
+
+            .tables-content {
+                overflow: hidden;                
+                .btn-loadTables {
+                    margin: 0;
+                    z-index: 10;
+                    //El z-index no funciona sin un position
+                    position: relative;
+
+                    background: $secondColor;
+                }
+                .tables {
+                    display: block;
+                    //Transformación para la aparición de los botones de las tablas
+                    transition: transform .5s ease-out;
+                    transform: translateY(-150%);
+                    &.appear {
+                        transform: translateY(0);
+                    }
+                    .tables-item {
+                        z-index: 1;
+                        display: block;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+                        height: 50px;
+                        //margin-bottom: 10px;
+
+                        color: #fff;
+                        font-size: 1em;
+                        background: $thirdColor;
+                        font-family: $fontMain;
+                        cursor: pointer;
+                      
+
+                        &::after {
+                            display: block;
+                            content: '';
+                            width: 100%;
+                            height: 4px;
+                            background: #fff;
+                            align-self: flex-end;
+                            transform: translateX(-100%);
+                            transform-origin: center left;
+                            transition: transform .3s ease-in-out;
+                        }
+
+                        &:hover::after {
+                            transform: translateX(0);
+                        }
+                    }
+                }
+            }
+        }
         .center {
             width: 80%;
             height: 100%;
             background-color: aqua;
         }
+
+        .right {
+            .codigoColores {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+                
+                h2 {
+                    font-size: 1.5em;
+                    font-family: $fontMain;
+                    text-align: center;
+                    color: black;
+                }
+
+                .codigo-color-item {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 50px;
+                    width: 90%;
+                    margin-bottom: 4px;
+
+                    font-family: $fontSecond;
+                    border-radius: 10px;
+                    color: #fff;
+                    text-align: center;
+                }
+            }
+        }
     }
+}
+
+//Código para colores
+.resOk {
+    background: green;
+}
+
+.resInformative {
+    background-color: #2464FB;
+}
+
+.resRedirection {
+    background-color: #7024FB;
+}
+
+.resErrClient {
+    background-color: #FB5C24;
+}
+
+.resErrServer {
+    background-color: #FB2437;
+    
 }

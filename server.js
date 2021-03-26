@@ -14,33 +14,14 @@ const port = 8082;
 
 let indexHTML = null;
 const fs = require('fs').promises;
-const getIndexHTML = () => {
-    return new Promise((resolve, reject) => {
-        fs.readFile(`${__dirname  + "/index.html"}`,'utf-8')
-        .then(data => {
-            indexHTML = data;
-            resolve(indexHTML);
-        })
-        .catch(err => {
-            indexHTML = `Resource not found`;
-            reject(indexHTML);
-        });
-    })
-}
 
 console.log(__dirname + '/index.html');
 const requestListener = (req,res) => {
     console.log(req.url);
     switch(req.url) {
         case '/':
-            getIndexHTML()
-                .then(data => {
-                    res.setHeader('Content-Type','text/html');
-                    res.writeHead('200');
-                    console.log(data);
-                    res.end(data);
-                })
-
+            res.writeHead(200);
+            res.end('Return');
             break;
         default:
             res.writeHead(401);
