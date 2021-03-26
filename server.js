@@ -17,30 +17,27 @@ const requestListener = async (req, res) => {
             break;
         case '/loadDataAccessLogs':
             try {
+                //Esta promesa tiene como objetivo escribir el JSON, si se escribe bien devuelve un true
                 const responseGenerateJSON = await generateJSON();
+                //Si devuelve un true procedemmos a leer el JSON obtenido y lo mandamos al cliente
                 if (responseGenerateJSON) {
-                    //const data = await getDataLogs('logs.json');
-                    //console.log(data);
-                    const data = await getDataLogs();
+                    const data = await getDataLogs('logs.json');
                     console.log('Piden json');
                     res.setHeader("Access-Control-Allow-Origin", "*");
                     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With");
-                    //res.setHeader("Content-Type", "application/json");
-                    res.setHeader("Content-Type", "text/plain");
+                    res.setHeader("Content-Type", "application/json");
                     res.writeHead(200);
-                    console.log("data");
-                    res.end("data");
+                    res.end(data);
                 }
             } catch (err) {
+                //Manejo de errores de las dos funciones anteriores
                 console.log('Error al procesar el JSON');
                 console.log(err);
-                
-                
                 res.setHeader("Access-Control-Allow-Origin", "*");
                 res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With");
                 res.setHeader("Content-Type", "text/plain");
                 res.writeHead(500);
-                res.end("err");
+                res.end(`Error al procesar el JSON ${err}`);
             }
             break;
         default:
