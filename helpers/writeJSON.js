@@ -2,7 +2,7 @@
 const fs = require('fs');
 const nameFile = 'access_log';
 const outputFile = 'logs.json';
-//Esta función es para leer el contenido del archivo es una promesa para el manejo de callbacks
+//Esta función es para leer el contenido del archivo access_logs es una promesa para el manejo de callbacks
 const readLogs = (routeFile) => {
     return new Promise((resolve,reject) => {
         let json = '[';
@@ -60,6 +60,7 @@ const readLogs = (routeFile) => {
     })
 }
 
+//Esta función es usada para escribir el documento JSON con la información filtrada del access_log
 const writeJSON = (data) => {
     try {
         fs.writeFileSync('logs.json',data);
@@ -69,11 +70,14 @@ const writeJSON = (data) => {
         throw `El archivo ${outputFile} no se ha podido generar correctamente`;
     }
 }
- 
+
+//Esta función es la que hace los dos procesos, primero leer y filtrra y finalmente escribe el JSON
 const generateJSON = async () => {
     try {
         const data = await readLogs(nameFile);
         await writeJSON(data);
+        //Si el archivo pudo ser leido y el JSON escrito correctamente
+        //Regresamos un boolean
         return true;
     }
     catch (error){
@@ -82,6 +86,7 @@ const generateJSON = async () => {
     }
 }
 
+//Exportamos la función para que pueda ser usado por el archivo principal
 module.exports = {
     generateJSON
 }
