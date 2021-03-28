@@ -1,0 +1,26 @@
+{
+  "name": "proyecto_bitacora",
+  "version": "1.0.0",
+  "description": "Mostrar los Logs de acceso de Apache con una interfaz gráfica usando node",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LF236/Interfaz_Apache_Logs_WEB.git"
+  },
+  "keywords": [
+    "Apache",
+    "NodeJS",
+    "JavaScript",
+    "UV"
+  ],
+  "author": "LF236",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LF236/Interfaz_Apache_Logs_WEB/issues"
+  },
+  "homepage": "https://github.com/LF236/Interfaz_Apache_Logs_WEB#readme"
+}
