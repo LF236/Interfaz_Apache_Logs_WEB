@@ -58,6 +58,7 @@ article {
             //background: lawngreen;
         }
 
+        //Configuración de los botones del sitio de la parte izquierda
         .left {
             //Diseño de los botones
             span[class^='btn-'] {
@@ -81,7 +82,7 @@ article {
                     font-size: 1.1em;
                 }
             }
-
+            //Este es el sub-menú para generar las gráficas que utilizaremos
             .tables-content {
                 overflow: hidden;                
                 .btn-loadTables {
@@ -137,12 +138,45 @@ article {
                 }
             }
         }
+
+        //Donde va la tabla que generamos
         .center {
             width: 80%;
             height: 100%;
+            margin-left: 5px;
             background-color: aqua;
+            table {
+                width: 100%;
+                background: $firstColor;
+                border-collapse: collapse;
+                tr {
+                    th,td {
+                        width: 16%;
+                    }
+              
+                    th {
+                        color: #fff;
+                        font-family: $fontMain;
+                        font-size: 1.5em;
+                        text-align: center;
+                        background: $secondColor;
+                        border: 0;
+                    }
+                    td {
+                        text-align: center;
+                        font-family: $fontSecond;
+                        color: #fff;
+                        
+                    }
+                    //Solución por si el recurso llega a ser demasido grande se alinie a la izquierda y no al centro
+                    .recurso {
+                        text-align: left;
+                    }
+                }
+            }
         }
 
+        //La parte derecha del sitio en donde van los códigos de los colores de los códigos de respuesta
         .right {
             .codigoColores {
                 display: flex;
@@ -176,13 +210,15 @@ article {
 }
 
 //Código para colores
+.resInformative {
+    background-color: #2464FB;
+}
+
 .resOk {
     background: green;
 }
 
-.resInformative {
-    background-color: #2464FB;
-}
+
 
 .resRedirection {
     background-color: #7024FB;

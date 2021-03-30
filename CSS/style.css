@@ -162,7 +162,37 @@ article .content-global .left .tables-content .tables .tables-item:hover::after 
 article .content-global .center {
   width: 80%;
   height: 100%;
+  margin-left: 5px;
   background-color: aqua;
+}
+
+article .content-global .center table {
+  width: 100%;
+  background: #176db7;
+  border-collapse: collapse;
+}
+
+article .content-global .center table tr th, article .content-global .center table tr td {
+  width: 16%;
+}
+
+article .content-global .center table tr th {
+  color: #fff;
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.5em;
+  text-align: center;
+  background: #05ac53;
+  border: 0;
+}
+
+article .content-global .center table tr td {
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  color: #fff;
+}
+
+article .content-global .center table tr .recurso {
+  text-align: left;
 }
 
 article .content-global .right .codigoColores {
@@ -203,12 +233,12 @@ article .content-global .right .codigoColores .codigo-color-item {
   text-align: center;
 }
 
-.resOk {
-  background: green;
-}
-
 .resInformative {
   background-color: #2464FB;
+}
+
+.resOk {
+  background: green;
 }
 
 .resRedirection {
