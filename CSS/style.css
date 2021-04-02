@@ -16,6 +16,8 @@ header {
   width: 100%;
   height: 65px;
   background-color: #176db7;
+  position: -webkit-sticky;
+  position: sticky;
 }
 
 header .content-global {
@@ -57,6 +59,7 @@ article .content-global {
 article .content-global .left, article .content-global .right {
   width: 10%;
   height: 100%;
+  position: fixed;
 }
 
 article .content-global .left span[class^='btn-'] {
@@ -160,9 +163,9 @@ article .content-global .left .tables-content .tables .tables-item:hover::after 
 }
 
 article .content-global .center {
-  width: 80%;
-  height: 100%;
-  margin-left: 5px;
+  margin: auto;
+  width: 78%;
+  height: 600%;
   background-color: aqua;
 }
 
@@ -193,6 +196,11 @@ article .content-global .center table tr td {
 
 article .content-global .center table tr .recurso {
   text-align: left;
+}
+
+article .content-global .right {
+  right: 0;
+  margin-right: 15px;
 }
 
 article .content-global .right .codigoColores {

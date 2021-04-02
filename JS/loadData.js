@@ -13,13 +13,12 @@ const request = (requestData) => {
         xhr.send();
     })
 }
-//Función parar imprimir la data que obtenemos al hacer una petición al server
+
+//Función parar imprimir la data que obtenemos al hacer una petición al server (Tabla principal)
 const printData = (data) => {
     let table = document.createElement('table');
-    let aux = document.createDocumentFragment();
+    //Creamos e insertamos las cabezeras de la tabla principal
     centerData.innerHTML = '';
-    //Recorremos el JSON elemento por elemento
-    //Tenemos que recorrer desde el último elemento que sería el último elemento solicitado
     const tableTitles = `
         <tr>
         <th>IP</th>
@@ -31,6 +30,11 @@ const printData = (data) => {
         </tr>
     `
     table.insertAdjacentHTML('beforeend',tableTitles);
+    //Recorremos el JSON elemento por elemento
+    /*
+    La data que obtenemos va desde el primero log hasta el último, nosotros queremos imprimir la data
+    desde el último log hasta el primero, es por ello que recorremos el JSON de manera inversa
+    */
     data.slice().reverse().forEach(el => {
         //Definimos el color de fondo del codigo de respuesta con base a nuestro código de colores
         let backgroundCodeRequest = '';
@@ -67,18 +71,17 @@ const printData = (data) => {
                 <td class=${backgroundCodeRequest}>${el.codeRequest}</td>
             </tr>
         `;
+        //Tratamos el error del algún log mal registrado
         if(!(el.method === 'undefined')) {
             //console.log('NO');
             table.insertAdjacentHTML('beforeend',tableElement);
         }
         
     })
-    //console.log(aux);
-    
-    //console.log(table);
+    //Agregamos la variable tabla al DOM de nuestro HTML, que es hijo de "centerData"
     centerData.appendChild(table);
-    
 }
+
 showBtnTables.addEventListener('click', () => {
     //Mostrar los botones de las tablas
     tablesContent.classList.toggle('appear');
