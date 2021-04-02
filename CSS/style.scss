@@ -146,13 +146,10 @@ article {
 
         //Donde va la tabla que generamos
         .center {
-            margin: auto;
+            margin: 0 auto;
             width: 78%;
             //height: 100%;
-            height: 600%;
-           
-            background-color: aqua;
-            
+
             table {
                 width: 100%;
                 background: $firstColor;
@@ -208,7 +205,8 @@ article {
                     height: 50px;
                     width: 90%;
                     margin-bottom: 4px;
-
+                    cursor: pointer;
+                    
                     font-family: $fontSecond;
                     border-radius: 10px;
                     color: #fff;

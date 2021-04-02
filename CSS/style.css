@@ -163,10 +163,8 @@ article .content-global .left .tables-content .tables .tables-item:hover::after 
 }
 
 article .content-global .center {
-  margin: auto;
+  margin: 0 auto;
   width: 78%;
-  height: 600%;
-  background-color: aqua;
 }
 
 article .content-global .center table {
@@ -235,6 +233,7 @@ article .content-global .right .codigoColores .codigo-color-item {
   height: 50px;
   width: 90%;
   margin-bottom: 4px;
+  cursor: pointer;
   font-family: "Ubuntu", sans-serif;
   border-radius: 10px;
   color: #fff;
