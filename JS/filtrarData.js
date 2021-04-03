@@ -18,11 +18,6 @@ const printData = (data) => {
     //Creamos cada elemento de la tabla HTML recorriendo la data y filtrandola con los "if"
     data.slice().reverse().forEach(el => {
         let codeRequest = parseInt(el.codeRequest);
-        /*
-            Creamos un rango, el codigo de respuesta tiene que ser mayor o igual al filtro y menor al (filtro + 100), 
-            que es el siguiente grupo de los códigos de respuesta HTTP 
-        */
-
         //Definimos el color de fondo del codigo de respuesta con base a nuestro código de colores
         let backgroundCodeRequest = '';
         const codeFirstNumber = (el.codeRequest).split('');
@@ -162,4 +157,3 @@ const filter = (code, data) => {
             console.log('Error al cargar la data');
     }
 }
-

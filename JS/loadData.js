@@ -1,10 +1,9 @@
+//Este archivo es solo para procesar las acciones que realizan los botones de la WEB
 const loadData = document.getElementById('btn-loadData');
 const btn_filterOkPetition = document.getElementById('btn-codeOK');
 const btn_redirePetition = document.getElementById('btn-codeRedire');
 const btn_errorClientPetition = document.getElementById('btn-codeErrorClient');
 const btn_errorServerPetition = document.getElementById('btn-codeErrorServer');
-const showBtnTables = document.getElementById('btn-loadTables');
-const tablesContent = document.getElementById('tables-content');
 const centerData = document.getElementById('centerContent');
 /*
     Nota Importante: Para no tener que hacer la petición al servidor constantemente para solicitar 
@@ -24,10 +23,7 @@ const request = (requestData) => {
         xhr.send();
     })
 }
-showBtnTables.addEventListener('click', () => {
-    //Mostrar los botones de las tablas
-    tablesContent.classList.toggle('appear');
-})
+
 
 //Esta es la función que se encarga de mostrar todo el JSON que nos devuelve el backend (NODEJS)
 //Se activa al dar clic al botón "LOAD DATA"
@@ -38,6 +34,7 @@ loadData.addEventListener('click', async() => {
     filter(0,auxData);
 })
 
+//Boton para filtrar peticiones satisfactorias
 btn_filterOkPetition.addEventListener('click', () => {
     //Mandamos a llamar a la función que se encuentra dentro del archivo filtrarData.js, pasamos como parametros
     //la data y que es un codigo 200
@@ -47,6 +44,7 @@ btn_filterOkPetition.addEventListener('click', () => {
     filter(200,auxData);
 })
 
+//Boton para filtrar peticiones de Redirección
 btn_redirePetition.addEventListener('click', () => {
     //Mandamos a llamar a la función que se encuentra dentro del archivo filtrarData.js, pasamos como parametros
     //la data y que es un codigo 200
@@ -56,6 +54,7 @@ btn_redirePetition.addEventListener('click', () => {
     filter(300,auxData);
 })
 
+//Boton para filtrar errores del cliente
 btn_errorClientPetition.addEventListener('click', () => {
     //Mandamos a llamar a la función que se encuentra dentro del archivo filtrarData.js, pasamos como parametros
     //la data y que es un codigo 200
@@ -65,7 +64,7 @@ btn_errorClientPetition.addEventListener('click', () => {
     filter(400,auxData);
 })
 
-
+//Botón para filtrar errores del server
 btn_errorServerPetition.addEventListener('click', () => {
     //Mandamos a llamar a la función que se encuentra dentro del archivo filtrarData.js, pasamos como parametros
     //la data y que es un codigo 200
