@@ -5,6 +5,7 @@ const btn_redirePetition = document.getElementById('btn-codeRedire');
 const btn_errorClientPetition = document.getElementById('btn-codeErrorClient');
 const btn_errorServerPetition = document.getElementById('btn-codeErrorServer');
 const centerData = document.getElementById('centerContent');
+const btnCodeTable = document.getElementById('btn-table-morePetitions');
 /*
     Nota Importante: Para no tener que hacer la petición al servidor constantemente para solicitar 
     el JSON con la información de los logs, cuando carguemos la tabla principal "LoadData", almacenamos
@@ -23,8 +24,6 @@ const request = (requestData) => {
         xhr.send();
     })
 }
-
-
 //Esta es la función que se encarga de mostrar todo el JSON que nos devuelve el backend (NODEJS)
 //Se activa al dar clic al botón "LOAD DATA"
 loadData.addEventListener('click', async() => {
@@ -72,4 +71,12 @@ btn_errorServerPetition.addEventListener('click', () => {
         return console.log('No hay data en la cache');
     }
     filter(500,auxData);
+})
+
+//Botón para mostrar la gráfica de los códigos de respuesta
+btnCodeTable.addEventListener('click', () => {
+    if(auxData === null) {
+        return console.log('Sin data');
+    }
+    printTable('tableOfCodes',auxData);
 })

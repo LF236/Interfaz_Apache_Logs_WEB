@@ -24,7 +24,7 @@
                     <span class="btn-loadTables" id="btn-loadTables">Show Tables</span>
                     <ul class="tables" id="tables-content">
                         <li class="tables-item">Recurso mas solicitado</li>
-                        <li class="tables-item">Tabla de condigos</li>
+                        <li class="tables-item" id="btn-table-morePetitions">Código con mas peticiones</li>
                         <li class="tables-item">Hora de mas tráfico</li>
                     </ul>                    
                 </div>
@@ -33,7 +33,7 @@
 
             <!-- Es este apartado van las tablas de los logs -->
             <div class="center" id="centerContent">
-               
+                
             </div>
 
             <div class="right">
@@ -58,8 +58,14 @@
         </div>
     </article>
 
+    <div class="contentGra" style="width: 50%; margin: auto;">
+        <canvas id="myChart" width="200" height="200"></canvas>
+    </div>
+    
     <script src="./JS/loadData.js"></script>
     <script src="./JS/filtrarData.js"></script>
     <script src="./JS/effects.js"></script>
+    <script src="./JS/tables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js"></script>
 </body>
 </html>
