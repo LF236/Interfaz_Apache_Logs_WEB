@@ -65,7 +65,10 @@ article {
         //Configuración de los botones del sitio de la parte izquierda
         .left {
             //Diseño de los botones
-            
+            transition: top .5 ease-in;
+            .animation &{
+                top: 0;
+            }   
             span[class^='btn-'] {
                 display: block;
                 display: flex;
@@ -213,6 +216,9 @@ article {
         .right {
             right: 0;
             margin-right: 15px;
+            .animation &{
+                top: 0;
+            }  
             .codigoColores {
                 display: flex;
                 flex-wrap: wrap;
@@ -265,4 +271,10 @@ article {
 .resErrServer {
     background-color: #FB2437;
     
+}
+
+.test {
+    width: 100%;
+    height: 400%;
+    background: red;
 }

@@ -20,3 +20,18 @@ const errorPrintData = () => {
         </div>
     `
 }
+
+//Animación de los botones para subirlos al hacer Scroll
+window.addEventListener('scroll', e => {
+    //65 = Tamaño del header
+    const sizeHead = 70;
+    console.log(window.scrollY);
+    if(window.scrollY > 75) {
+        document.body.classList.add('animation');
+    }
+
+    if(window.scrollY < 68) {
+        document.body.classList.remove('animation');
+    }
+    
+})
