@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/LF236/Interfaz_Apache_Logs_WEB#readme",
   "dependencies": {
-    "nodemon": "^2.0.7"
+    "colors": "^1.4.0",
+    "nodemon": "^2.0.7",
+    "yargs": "^16.2.0"
   }
 }

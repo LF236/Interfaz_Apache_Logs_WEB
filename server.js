@@ -1,10 +1,25 @@
+//Importamos funciones de los Scripts que se encuentran en la carpeta helpers
 const { generateJSON } = require('./helpers/writeJSON');
 const { getDataLogs } = require('./helpers/readJSON');
+const colors = require('colors');
+//Usamos YARGS, esto para trabajar con los parametros de entrada en la consola
+const argv = require('yargs')
+    .options('f', {
+        alias: 'file',
+        demandOption: true,
+        description: 'Archivo de logs, que es el que se va a estar monitoreando',
+        type: 'string'
+    })
+    .argv
+;
 //
+let file_logs = argv.file;
+//Esta es la función con la que manejamos las dos funciones que importamos anteriormente
+//Primero procesamos el JSON con los logs, y finalmente leemos el JSON generado
 const getLogs = async () => {
+    //Cerramos todo en un try, si de alguna función hay un error el catch los recoge
     try {
-        //Esta promesa tiene como objetivo escribir el JSON, si se escribe bien devuelve un true
-        const responseGenerateJSON = await generateJSON();
+        const responseGenerateJSON = await generateJSON(file_logs);
         const data = await getDataLogs('logs.json');
         return data;
     }catch(error) {
@@ -17,8 +32,8 @@ const http = require('http');
 const host = '127.0.0.1';
 const port = 8082;
 
-
-//console.log(__dirname + '/index.html');
+//Función para escuchar las peticiones
+//Con base a la URL que el Navegador solicite la procesamos dentro del Switch para responder
 const requestListener = async (req, res) => {
     console.log(req.url);
     switch (req.url) {
@@ -27,15 +42,20 @@ const requestListener = async (req, res) => {
             res.writeHead(200);
             res.end('Return');
             break;
+        //Para no sobrecargar el servidor, solo va a procesar la URL loadData (Posible a cambios)
         case '/loadDataAccessLogs':
             getLogs()
                 .then(data => {
                     console.log('Piden json');
-                    console.log(data);
+                    //Creamos las cabeceras, lo hacemos lo mas básico con reglas de control, y el JSON lo mandamos
+                    //pero en texto plano, esto por preferencias, ya que en la parte del FrontEnd, es más fácil
+                    //leer un texto plano y pasarlo a JSON
                     res.setHeader("Access-Control-Allow-Origin", "*");
                     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With");
                     res.setHeader("Content-Type", "text/plain");
+                    //Mandamos el código de respuesta
                     res.writeHead(200);
+                    //Mandamos la data
                     res.end(data);
                 })
                 .catch(err => {
@@ -44,10 +64,12 @@ const requestListener = async (req, res) => {
                     res.setHeader("Access-Control-Allow-Origin", "*");
                     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With");
                     res.setHeader("Content-Type", "text/plain");
+                    //En caso de error, solo lo mandamos con un código 500
                     res.writeHead(500);
                     res.end(`Error al procesar el JSON ${err}`);
                 })
             break;
+        //En caso de error, regresamos un error 401
         default:
             console.log('Error');
             res.writeHead(401);
@@ -56,7 +78,9 @@ const requestListener = async (req, res) => {
 
 }
 
+//Levantar Servidor WEB que estará a la escucha de las peticiones
+//Pasamos la función que tenemos preparada para procesar las escuchas
 const server = http.createServer(requestListener);
 server.listen(port, host, () => {
-    console.log(`Servidor levantado ${host}:${port}`);
+    console.log(colors.rainbow(`Servidor levantado ${host}:${port}`));
 })

@@ -8,7 +8,6 @@ showBtnTables.addEventListener('click', () => {
 })
 
 //Función para imprimir la animación de error al querer imprimir Data
-
 const errorPrintData = () => {
     centerData.innerHTML = `
         <div class="errorPage">
@@ -20,5 +19,4 @@ const errorPrintData = () => {
         </div>
         </div>
     `
-    
 }

@@ -78,7 +78,7 @@ btn_errorServerPetition.addEventListener('click', () => {
     }
     filter(500,auxData);
 })
-//
+//Botón para mostrar la gráfica del horario de tráfico
 btnTrafficTable.addEventListener('click', () => {
     if(auxData === null) {
         errorPrintData();

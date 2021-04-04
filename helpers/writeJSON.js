@@ -1,6 +1,5 @@
 //-----------Procesamiento de datos------------------
 const fs = require('fs');
-const nameFile = 'access_log';
 const outputFile = 'logs.json';
 //Esta función es para leer el contenido del archivo access_logs es una promesa para el manejo de callbacks
 const readLogs = (routeFile) => {
@@ -76,7 +75,7 @@ const writeJSON = (data) => {
 }
 
 //Esta función es la que hace los dos procesos, primero leer y filtrra y finalmente escribe el JSON
-const generateJSON = async () => {
+const generateJSON = async (nameFile) => {
     try {
         const data = await readLogs(nameFile);
         await writeJSON(data);
