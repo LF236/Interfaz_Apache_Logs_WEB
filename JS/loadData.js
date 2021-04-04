@@ -6,6 +6,7 @@ const btn_errorClientPetition = document.getElementById('btn-codeErrorClient');
 const btn_errorServerPetition = document.getElementById('btn-codeErrorServer');
 const centerData = document.getElementById('centerContent');
 const btnCodeTable = document.getElementById('btn-table-morePetitions');
+const btnTrafficTable = document.getElementById('btn-table-traffic');
 /*
     Nota Importante: Para no tener que hacer la petición al servidor constantemente para solicitar 
     el JSON con la información de los logs, cuando carguemos la tabla principal "LoadData", almacenamos
@@ -73,11 +74,17 @@ btn_errorServerPetition.addEventListener('click', () => {
     }
     filter(500,auxData);
 })
-
+//
+btnTrafficTable.addEventListener('click', () => {
+    if(auxData === null) {
+        return console.log('Sin Data');
+    }
+    printGraph('tableOfTraffic', auxData);
+})
 //Botón para mostrar la gráfica de los códigos de respuesta
 btnCodeTable.addEventListener('click', () => {
     if(auxData === null) {
         return console.log('Sin data');
     }
-    printTable('tableOfCodes',auxData);
+    printGraph('tableOfCodes',auxData);
 })

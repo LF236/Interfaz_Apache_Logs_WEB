@@ -8,13 +8,13 @@ let theChart = null
         backgroundColors: Colores del background, tienen que corresponder al No. de elementos de titulos,
         borderColors: Colores de border para las barras de la gráfica, igual tienen que coincidir con el No. de titulos 
 */
-const loadChart = (dataRecolected,headOfTable,label,backgroundColors,borderColors) => {
+const loadChart = (dataRecolected, headOfTable, label, backgroundColors, borderColors) => {
     const ctx = myChart.getContext('2d');
     myChart.width = 200;
     myChart.height = 100;
     theChart = new Chart(ctx, {
-        type : 'bar',
-        data : {
+        type: 'bar',
+        data: {
             labels: headOfTable,
             datasets: [{
                 label: label,
@@ -39,14 +39,14 @@ const loadChart = (dataRecolected,headOfTable,label,backgroundColors,borderColor
 //Función para crear filtrar la data para la gráfica de códigos de respuesta
 const tableOfCodes = (data) => {
     //Contadores para cada uno de los tipos de respuesta
-    let resOk = 0,resDire = 0,resErrClient = 0,resErrServer = 0;
+    let resOk = 0, resDire = 0, resErrClient = 0, resErrServer = 0;
     //Leemos y recorremos la data
     data.forEach(el => {
         let code = el.codeRequest;
         //El codigo de respuesta del JSON lo partimos y solo obtenemos el primer digito
         let codeFirstDigite = code.split('');
         //Con base al primer digito, empezamos a hacer los incrementos correspondientes
-        switch(codeFirstDigite[0]) {
+        switch (codeFirstDigite[0]) {
             case '2':
                 resOk += 1;
                 break;
@@ -62,7 +62,7 @@ const tableOfCodes = (data) => {
         }
     })
     //Creamos los parametros que tienen que ser mandamos a la función "loadChart()"
-    let dataRecolected = [resOk,resDire,resErrClient,resErrServer];
+    let dataRecolected = [resOk, resDire, resErrClient, resErrServer];
     let headOfTable = ["Respuestas Satisfactorias", "Redirección", "Error del Cliente", "Error del Servidor"];
     let label = "Gráfica de Códigos de Respuesta";
     let backgroundColors = [
@@ -86,12 +86,65 @@ const tableOfCodes = (data) => {
     //Recolentamos la varible del HTML creado anteriormente, ES IMPORTANTE que sea en este momento
     let myChart = document.getElementById('myChart')
     //Imprimimos la gráfica
-    loadChart(dataRecolected,headOfTable,label,backgroundColors,borderColors);
+    loadChart(dataRecolected, headOfTable, label, backgroundColors, borderColors);
 }
-const printTable = (id,data) =>{
-    switch(id) {
+//Función para crear filtrar la data para la gráfica de las horas de tráfico
+const tableOfTraffic = (data) => {
+    let ceroToSix = 0, sixToTwelve = 0, twelveToEighteen = 0, eighteenToTwentyFour = 0;
+    data.forEach(el => {
+        //Obtenemos unicamente la hora
+        let aux = el.hour;
+        let hour = aux.split(':');
+        hour = parseInt(hour[0]);
+        if ((hour > 0) && (hour < 6)) {
+            ceroToSix += 1;
+        }
+        if ((hour >= 6) && (hour < 12)) {
+            sixToTwelve += 1;
+        }
+        if ((hour >= 12) && (hour < 18)) {
+            twelveToEighteen += 1;
+        }
+        if ((hour >= 18) && (hour <= 24)) {
+            eighteenToTwentyFour += 1;
+        }
+    })
+
+    const dataRecolected = [ceroToSix, sixToTwelve, twelveToEighteen, eighteenToTwentyFour];
+    const headOfTable = ["0 - 5", "6 - 11", "12 - 17", "18 - 24"];
+    const label = "Horario del Tráfico de Peticiones";
+    let backgroundColors = [
+        'rgba(18, 114, 18, 1)',
+        'rgba(79, 15, 120, 1)',
+        'rgba(251, 92, 36, 1)',
+        'rgba(251, 36, 36, 1)'
+    ]
+    let borderColors = [
+        'rgba(255,99,132,1)',
+        'rgba(54,162,235,1)',
+        'rgba(255,206,86,1)',
+        'rgba(255,99,132,1)',
+    ]
+    //Borramos el contenido que tenga la variable centerData(las tablas) y creamos el HTML para crear la gráfica
+    centerData.innerHTML = `
+        <div class="contentGra" style="width: 100%; margin: auto;">
+            <canvas id="myChart" width="200" height="100"></canvas>
+        </div>
+        `;
+    //Recolentamos la varible del HTML creado anteriormente, ES IMPORTANTE que sea en este momento
+    let myChart = document.getElementById('myChart')
+    //Imprimimos la gráfica
+    loadChart(dataRecolected, headOfTable, label, backgroundColors, borderColors);
+}
+
+//Función para identificar que gráfica es la que tenemos que imprimir
+const printGraph = (id, data) => {
+    switch (id) {
         case 'tableOfCodes':
             tableOfCodes(data);
+            break;
+        case 'tableOfTraffic':
+            tableOfTraffic(data);
             break;
         default:
             console.log('ERROR');
