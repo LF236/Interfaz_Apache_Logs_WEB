@@ -22,16 +22,6 @@
                     {
                         "ip": "::1",
                         "date": "24/Oct/2020",
-                        "hour": "15:48:28",
-                        "method": "-",
-                        "resource": "408",
-                        "protocol": "-",
-                        "codeRequest": "undefined"
-                    }
-                ,
-                    {
-                        "ip": "::1",
-                        "date": "24/Oct/2020",
                         "hour": "15:49:02",
                         "method": "GET",
                         "resource": "/index.php",

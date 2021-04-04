@@ -31,6 +31,7 @@ const requestListener = async (req, res) => {
             getLogs()
                 .then(data => {
                     console.log('Piden json');
+                    console.log(data);
                     res.setHeader("Access-Control-Allow-Origin", "*");
                     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With");
                     res.setHeader("Content-Type", "text/plain");

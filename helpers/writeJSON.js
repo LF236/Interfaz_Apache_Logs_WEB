@@ -51,8 +51,12 @@ const readLogs = (routeFile) => {
                     }
                 `;
                 count += 1;
-                json += jsonElement;
-                if(count < auxLength) json += ',';
+                //Solución al error de peticiones sin codigo de respuesta de apache, esto generaba conflictos en Windows
+                if(protocol != '-' && method != '-') {
+                    json += jsonElement;
+                    if(count < auxLength) json += ',';
+                }
+                
             })
             json += ']';
             resolve(json);

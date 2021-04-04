@@ -29,6 +29,7 @@ const request = (requestData) => {
 loadData.addEventListener('click', async() => {
     const data = await request({method: 'GET', url: 'http://127.0.0.1:8082/loadDataAccessLogs'});
     //console.log(data.responseText);
+    //console.log(JSON.parse(data.responseText));
     auxData = JSON.parse(data.responseText);
     filter(0,auxData);
 })

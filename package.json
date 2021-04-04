@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/LF236/Interfaz_Apache_Logs_WEB/issues"
   },
-  "homepage": "https://github.com/LF236/Interfaz_Apache_Logs_WEB#readme"
+  "homepage": "https://github.com/LF236/Interfaz_Apache_Logs_WEB#readme",
+  "dependencies": {
+    "nodemon": "^2.0.7"
+  }
 }
