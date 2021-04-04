@@ -130,7 +130,7 @@ const tableOfTraffic = (data) => {
         <div class="contentGra" style="width: 100%; margin: auto;">
             <canvas id="myChart" width="200" height="100"></canvas>
         </div>
-        `;
+    `;
     //Recolentamos la varible del HTML creado anteriormente, ES IMPORTANTE que sea en este momento
     let myChart = document.getElementById('myChart')
     //Imprimimos la gráfica

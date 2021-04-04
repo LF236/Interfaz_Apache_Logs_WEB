@@ -40,7 +40,8 @@ btn_filterOkPetition.addEventListener('click', () => {
     //Mandamos a llamar a la función que se encuentra dentro del archivo filtrarData.js, pasamos como parametros
     //la data y que es un codigo 200
     if(auxData === null) {
-        return console.log('No hay data en la cache');
+        errorPrintData();
+        return 0;
     }
     filter(200,auxData);
 })
@@ -50,7 +51,8 @@ btn_redirePetition.addEventListener('click', () => {
     //Mandamos a llamar a la función que se encuentra dentro del archivo filtrarData.js, pasamos como parametros
     //la data y que es un codigo 200
     if(auxData === null) {
-        return console.log('No hay data en la cache');
+        errorPrintData();
+        return 0;
     }
     filter(300,auxData);
 })
@@ -60,7 +62,8 @@ btn_errorClientPetition.addEventListener('click', () => {
     //Mandamos a llamar a la función que se encuentra dentro del archivo filtrarData.js, pasamos como parametros
     //la data y que es un codigo 200
     if(auxData === null) {
-        return console.log('No hay data en la cache');
+        errorPrintData();
+        return 0;
     }
     filter(400,auxData);
 })
@@ -70,21 +73,24 @@ btn_errorServerPetition.addEventListener('click', () => {
     //Mandamos a llamar a la función que se encuentra dentro del archivo filtrarData.js, pasamos como parametros
     //la data y que es un codigo 200
     if(auxData === null) {
-        return console.log('No hay data en la cache');
+        errorPrintData();
+        return 0;
     }
     filter(500,auxData);
 })
 //
 btnTrafficTable.addEventListener('click', () => {
     if(auxData === null) {
-        return console.log('Sin Data');
+        errorPrintData();
+        return 0;
     }
     printGraph('tableOfTraffic', auxData);
 })
 //Botón para mostrar la gráfica de los códigos de respuesta
 btnCodeTable.addEventListener('click', () => {
     if(auxData === null) {
-        return console.log('Sin data');
+        errorPrintData();
+        return 0;
     }
     printGraph('tableOfCodes',auxData);
 })
