@@ -5,6 +5,8 @@ Requisitos
     ```
 	Navegador Web
 	NodeJS (https://nodejs.org/es/download/)
+    NPM = Gesto de paquetes de node
+        sudo apt-get install npm
     ```
 Preparación
 	1.Clonar el repositorio de node
