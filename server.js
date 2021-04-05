@@ -83,5 +83,5 @@ const requestListener = async (req, res) => {
 const server = http.createServer(requestListener);
 server.listen(port, host, () => {
     console.log(colors.rainbow(`Servidor levantado ${host}:${port}`));
-    console.log(colors.random('Solo abre el index.html con el navegador WEB que desees'));
+    console.log(colors.red('Solo abre el index.html con el navegador WEB que desees'));
 })
