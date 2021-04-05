@@ -2,8 +2,10 @@ Proyecto Administración Avanzada de Servicios
 El objetivo de este proyecto es crear una manera más fácil de mostrar los LOGS de algún servicio, en este caso del Servidor Web Apache.
 Esta aplicación esta escrita completamente en JavaScript, tanto en la parte del Backend y del Frontend.
 Requisitos
+    ```
 	Navegador Web
 	NodeJS (https://nodejs.org/es/download/)
+    ```
 Preparación
 	1.Clonar el repositorio de node
 		>git clone https://github.com/LF236/Interfaz_Apache_Logs_WEB.git
