@@ -16,7 +16,7 @@ Preparación
             >>COLORS => Permite cambiar los colores cuando trabajamos en consola.
 Ejecución
     1.node server.js -f access_log
-        >Ejecutamos el servidor y pasamos como parámetro el access_log de nuestro servidor apache.
+        >Ejecutamos el servidor y pasamos como parámetro el archivo access_log de nuestro servidor apache.
         >Si estamos en un entorno linux es necesario dar permisos o ejecutar con sudo.
     2.node server.js --help
         >Muestra la ayuda de la aplicación.
