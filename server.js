@@ -46,7 +46,7 @@ const requestListener = async (req, res) => {
         case '/loadDataAccessLogs':
             getLogs()
                 .then(data => {
-                    console.log('Piden json');
+                    console.log(colors.blue('Procesando Data'));
                     //Creamos las cabeceras, lo hacemos lo mas básico con reglas de control, y el JSON lo mandamos
                     //pero en texto plano, esto por preferencias, ya que en la parte del FrontEnd, es más fácil
                     //leer un texto plano y pasarlo a JSON
@@ -83,4 +83,5 @@ const requestListener = async (req, res) => {
 const server = http.createServer(requestListener);
 server.listen(port, host, () => {
     console.log(colors.rainbow(`Servidor levantado ${host}:${port}`));
+    console.log(colors.random('Solo abre el index.html con el navegador WEB que desees'));
 })
